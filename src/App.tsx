@@ -15,6 +15,7 @@ import { Home } from "./Home/pages/Home";
 import { AvatarPage } from "./Avatar/pages/AvatarPage";
 import { AvatarsPage } from "./Avatar/pages/AvatarsPage";
 import { NotFound } from "./NotFound";
+import { Footer } from "./Footer";
 
 export const App = () => (
   <BrowserRouter>
@@ -28,6 +29,7 @@ export const App = () => (
           <Route path="avatars/:avatarId" element={<AvatarPage />} />
         </Routes>
       </Box>
+      <Footer />
     </ChakraProvider>
   </BrowserRouter>
 );

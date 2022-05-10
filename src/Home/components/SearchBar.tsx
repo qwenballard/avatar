@@ -10,7 +10,7 @@ export const SearchBar = () => {
   return (
     <Box>
       <Center>
-        <Box m={4} width="sm" height="auto" justifyContent="center">
+        <Box m={10} width="sm" height="auto" justifyContent="center">
           <InputGroup>
             <InputLeftElement
               pointerEvents="none"
@@ -26,7 +26,7 @@ export const SearchBar = () => {
         </Box>
       </Center>
       <Center>
-        <Box>{character ? character : "Haven't searched yet"}</Box>
+        <Box mb={150}>{character ? character : "Haven't searched yet"}</Box>
       </Center>
     </Box>
   );

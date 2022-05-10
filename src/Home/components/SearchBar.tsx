@@ -26,7 +26,7 @@ export const SearchBar = () => {
         </Box>
       </Center>
       <Center>
-        <Box mb={150}>{character ? character : "Haven't searched yet"}</Box>
+        <Box mb={25}>{character ? character : "Haven't searched yet"}</Box>
       </Center>
     </Box>
   );

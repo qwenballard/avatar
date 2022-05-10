@@ -18,7 +18,7 @@ export const SearchBar = () => {
             />
             <Input
               type="text"
-              placeholder="Search for character"
+              placeholder="Search for character or nation"
               value={character}
               onChange={handleChange}
             />
@@ -26,7 +26,6 @@ export const SearchBar = () => {
         </Box>
       </Center>
       <Center>
-        <Box mb={25}>{character ? character : "Haven't searched yet"}</Box>
       </Center>
     </Box>
   );

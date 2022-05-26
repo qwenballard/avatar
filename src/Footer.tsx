@@ -31,29 +31,15 @@ export const Footer = () => (
         <ButtonGroup variant="ghost">
           <IconButton
             as="a"
-            href="#"
-            aria-label="LinkedIn"
-            icon={<FaLinkedin fontSize="1.25rem" />}
-          />
-          <IconButton
-            as="a"
-            href="#"
+            href="https://github.com/qwenballard"
             aria-label="GitHub"
             icon={<FaGithub fontSize="1.25rem" />}
           />
-          <IconButton
-            as="a"
-            href="#"
-            aria-label="Twitter"
-            icon={<FaTwitter fontSize="1.25rem" />}
-          />
         </ButtonGroup>
-      </Stack>
-      {/* <Flex mt={5}>
         <Text fontSize="sm" color="subtle">
           &copy; {new Date().getFullYear()} A website built for fun!
         </Text>
-      </Flex> */}
+      </Stack>
     </Stack>
   </Box>
 );

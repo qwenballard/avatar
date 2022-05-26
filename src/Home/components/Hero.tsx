@@ -46,8 +46,8 @@ export const Hero = () => {
             justifyContent="center"
           >
             <Button
-              // as="a"
-              // href="youtube.com/c/TeamAvatar"
+              as="a"
+              href="https://youtube.com/c/TeamAvatar"
               width="125px"
               rounded={"full"}
               bg={"blue.400"}
@@ -56,14 +56,10 @@ export const Hero = () => {
                 bg: "blue.500",
               }}
             >
-              <Link href="https://youtube.com/c/TeamAvatar" isExternal>
-                ATLA Youtube
-              </Link>
+              ATLA Youtube
             </Button>
-            <Button width="125px" rounded={"full"}>
-              <Link href="https://avatar.fandom.com" isExternal>
+            <Button as="a" href="https://avatar.fandom.com" width="125px" rounded={"full"}>
                 ATLA Wiki
-              </Link>
             </Button>
           </HStack>
         </Stack>

@@ -23,7 +23,6 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 const Links = ["home", "avatars", "nations"];
 
 const NavLink = ({ children }: { children: ReactNode }) => {
-  console.log(children);
   return (
     <Link
       px={2}

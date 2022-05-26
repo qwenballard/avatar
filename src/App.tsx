@@ -9,7 +9,7 @@ import {
   Grid,
   theme,
 } from "@chakra-ui/react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import { Home } from "./Home/pages/Home";
 import { AvatarPage } from "./Avatar/pages/AvatarPage";
@@ -21,10 +21,11 @@ export const App = () => (
   <BrowserRouter>
     <ChakraProvider theme={theme}>
       <Navbar />
-      <Box m={2}>
+      <Box m={2} minH={"81vh"}>
         <Routes>
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
           <Route path="avatars" element={<AvatarsPage />} />
           <Route path="avatars/:avatarId" element={<AvatarPage />} />
         </Routes>

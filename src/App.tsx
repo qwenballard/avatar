@@ -21,7 +21,7 @@ export const App = () => (
   <BrowserRouter>
     <ChakraProvider theme={theme}>
       <Navbar />
-      <Box m={2} minH={"81vh"}>
+      <Box m={2}>
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<Home />} />

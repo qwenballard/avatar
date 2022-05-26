@@ -14,6 +14,10 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export const Footer = () => (
   <Box
+    position="fixed"
+    bottom="0"
+    left="0"
+    right="0"
     as="footer"
     role="contentinfo"
     px={10}

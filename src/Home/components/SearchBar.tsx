@@ -18,7 +18,7 @@ export const SearchBar = () => {
             />
             <Input
               type="text"
-              placeholder="Search for character or nation"
+              placeholder="Search for character"
               value={character}
               onChange={handleChange}
             />

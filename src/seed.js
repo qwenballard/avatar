@@ -1,4 +1,4 @@
-const avatars = [
+export const seedDataAvatars = [
     {
         "allies": [
             "Appa"

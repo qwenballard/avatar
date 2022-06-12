@@ -18,20 +18,28 @@ import {
   Center,
   Skeleton,
   Divider,
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel,
+  Avatar,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { AvatarType } from "../avatars";
+import { AccordionCharacter } from "../components/AccordionCharacter";
 import { lastAirBenderApi } from "../constants";
 
 export const AvatarPage = () => {
   const [avatar, setAvatar] = useState<AvatarType>();
+  const [allies, setAllies] = useState<AvatarType[]>();
+  const [enemies, setEnemies] = useState<AvatarType[]>();
   const [loading, setLoading] = useState<boolean>(true);
   const location = useLocation();
 
   useEffect(() => {
     const characterId = location.pathname.slice(9);
-    console.log(characterId);
     fetch(`${lastAirBenderApi}/characters/${characterId}`)
       .then((result) => result.json())
       .then((result) => {
@@ -40,9 +48,22 @@ export const AvatarPage = () => {
       });
   }, []);
 
-  const renderPositionorProfession = () => {
-    let position = "";
+  useEffect(() => {
+    fetch(`${lastAirBenderApi}/characters?allies=${avatar?.name}`)
+      .then((result) => result.json())
+      .then((result) => {
+        setAllies(result);
+      });
 
+      fetch(`${lastAirBenderApi}/characters?enemies=${avatar?.name}`)
+        .then((result) => result.json())
+        .then((result) => {
+          setEnemies(result);
+        });
+  }, [avatar]);
+
+  const renderPositionOrProfession = () => {
+    let position = "";
     if (avatar?.position) {
       position = avatar.position;
     } else if (avatar?.profession) {
@@ -50,7 +71,6 @@ export const AvatarPage = () => {
     } else {
       return position;
     }
-
     return position;
   };
 
@@ -115,7 +135,7 @@ export const AvatarPage = () => {
                 }
               >
                 <VStack spacing={{ base: 4, sm: 6 }}>
-                  <Text fontSize={"lg"}>{renderPositionorProfession()}</Text>
+                  <Text fontSize={"lg"}>{renderPositionOrProfession()}</Text>
                 </VStack>
                 <Flex>
                   <Text
@@ -161,30 +181,54 @@ export const AvatarPage = () => {
                     {avatar?.weapon}
                   </Text>
                 </Flex>
-                <Box>
-                  <Text
-                    fontSize={{ base: "16px", lg: "18px" }}
-                    //TODO: useColorModeValue("yellow.500", "yellow.300")
-                    color={"yellow.500"}
-                    fontWeight={"500"}
-                    textTransform={"uppercase"}
-                    mb={"4"}
-                  >
-                    Allies:
-                  </Text>
-                </Box>
-                <Box>
-                  <Text
-                    fontSize={{ base: "16px", lg: "18px" }}
-                    //TODO: useColorModeValue("yellow.500", "yellow.300")
-                    color={"yellow.500"}
-                    fontWeight={"500"}
-                    textTransform={"uppercase"}
-                    mb={"4"}
-                  >
-                    Enemies:
-                  </Text>
-                </Box>
+              </Stack>
+              <Stack>
+                <Accordion allowToggle>
+                  <AccordionItem>
+                    <h2>
+                      <AccordionButton>
+                        <Box flex="1" textAlign="left">
+                          <Text
+                            fontSize={{ base: "16px", lg: "18px" }}
+                            //TODO: useColorModeValue("yellow.500", "yellow.300")
+                            color={"yellow.500"}
+                            fontWeight={"500"}
+                            textTransform={"uppercase"}
+                            mb={"4"}
+                          >
+                            Allies:
+                          </Text>
+                        </Box>
+                        <AccordionIcon />
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel pb={4}>
+                      <AccordionCharacter allies={allies} />
+                    </AccordionPanel>
+                  </AccordionItem>
+                  <AccordionItem>
+                    <h2>
+                      <AccordionButton>
+                        <Box flex="1" textAlign="left">
+                          <Text
+                            fontSize={{ base: "16px", lg: "18px" }}
+                            //TODO: useColorModeValue("yellow.500", "yellow.300")
+                            color={"yellow.500"}
+                            fontWeight={"500"}
+                            textTransform={"uppercase"}
+                            mb={"4"}
+                          >
+                            Enemies:
+                          </Text>
+                        </Box>
+                        <AccordionIcon />
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel pb={4}>
+                      <AccordionCharacter enemies={enemies} />
+                    </AccordionPanel>
+                  </AccordionItem>
+                </Accordion>
               </Stack>
 
               <Button

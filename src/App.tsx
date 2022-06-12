@@ -34,7 +34,9 @@ export const App = () => (
           <Route path="nations/:nationsId" element={<NationPage />} />
         </Routes>
       </Box>
-      <Footer />
+      <Box my={20}>
+        <Footer />
+      </Box>
     </ChakraProvider>
   </BrowserRouter>
 );

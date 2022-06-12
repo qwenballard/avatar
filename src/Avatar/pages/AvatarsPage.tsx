@@ -1,44 +1,30 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Center, Flex, Wrap } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { seedDataAvatars } from "../../seed";
 import { CharacterCard } from "../components/CharacterCard";
+import { AvatarType } from "../avatars";
+import { lastAirBenderApi } from "../constants";
 
 interface AvatarsPageProps {}
 
-type AvatarType = {
-  allies?: string[];
-  enemies?: string[];
-  _id: string;
-  photoUrl?: string;
-  name: string;
-  gender?: string;
-  eye?: string;
-  hair?: string;
-  skin?: string;
-  love?: string;
-  weapon?: string;
-  profession?: string;
-  position?: string;
-  predecessor?: string;
-  affiliation?: string;
-  first?: string;
-};
-
 export const AvatarsPage = ({}: AvatarsPageProps) => {
-  const [avatars, setAvatars] = useState < Array<AvatarType>>([]);
+  const [avatars, setAvatars] = useState <Array<AvatarType>>([]);
 
   useEffect(() => {
-    return setAvatars(seedDataAvatars);
+    fetch(`${lastAirBenderApi}/characters/avatar`)
+    .then(results => results.json())
+    .then((results) => {
+      setAvatars(results);
+    });
   }, []);
 
   return (
-    <>
-    <p>placeholder</p>
-      <Box p={2}>
-        { avatars.map(() => {
-          return <CharacterCard />
+    <Box mx={"auto"}>
+      <Flex flexWrap={"wrap"} justifyContent={"center"} flexDirection={"row"}>
+        {avatars.map((avatar) => {
+          return <CharacterCard key={avatar._id} avatar={avatar} />;
         })}
-      </Box>
-    </>
+      </Flex>
+    </Box>
   );
 };

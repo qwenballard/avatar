@@ -9,7 +9,6 @@ import {
   Text,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import heroLogo from "../../assets/images/ramen1.gif";
 
 export const Hero = () => {
   return (
@@ -20,16 +19,6 @@ export const Hero = () => {
             <Text
               as={"span"}
               position={"relative"}
-              // _after={{
-              //   content: "''",
-              //   width: "full",
-              //   height: useBreakpointValue({ base: "20%", md: "30%" }),
-              //   position: "absolute",
-              //   bottom: 1,
-              //   left: 0,
-              //   bg: "blue.400",
-              //   zIndex: -1,
-              // }}
             >
               &#8220;Sometimes life is like this tunnel. You can’t always see
               the light at the end of the tunnel, but if you keep moving, you
@@ -72,11 +61,11 @@ export const Hero = () => {
       <Flex flex={1} mx={0} justifyContent="center">
         <Image
           alt={"Login Image"}
-          objectFit={"cover"}
+          objectFit={"contain"}
           src={
-            "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            "fournations.gif"
           }
-          fallbackSrc="/ramen1.gif"
+          fallbackSrc="/avatarplaceholder.png"
         />
       </Flex>
     </Stack>

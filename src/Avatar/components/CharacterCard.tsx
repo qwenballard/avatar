@@ -1,5 +1,6 @@
 import { Avatar, Text, Badge, Box, Button, Center, Heading, Link, Stack, useColorModeValue } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { seedDataAvatars } from "../../seed.js";
 import { AvatarType } from "../avatars.js";
 
@@ -8,6 +9,11 @@ interface CharacterCardProps {
 }
 
 export const CharacterCard = ({avatar}: CharacterCardProps) => {
+let navigate = useNavigate();
+
+function viewAvatarProfile(_id: string) {
+  navigate(`/avatars/${avatar._id}`);
+}
 
   return (
     <Box
@@ -45,6 +51,8 @@ export const CharacterCard = ({avatar}: CharacterCardProps) => {
           _focus={{
             bg: "blue.500",
           }}
+          onClick={() => { viewAvatarProfile(avatar._id) }}
+          aria-label={"View Profile"}
         >
           View Profile
         </Button>
@@ -52,3 +60,4 @@ export const CharacterCard = ({avatar}: CharacterCardProps) => {
     </Box>
   );
 };
+

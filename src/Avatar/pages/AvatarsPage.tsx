@@ -31,6 +31,7 @@ export const AvatarsPage = ({}: AvatarsPageProps) => {
   return (
     <Box mx={"auto"}>
       {loading ? (
+        //TODO: Create Center Spinner Component in UI-Core 
         <Center h={"500px"}>
           <Spinner
             thickness="4px"

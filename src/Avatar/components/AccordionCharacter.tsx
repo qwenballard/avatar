@@ -15,6 +15,8 @@ import {
   SimpleGrid,
   WrapItem,
   Wrap,
+  LinkOverlay,
+  LinkBox,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { AvatarType } from "../avatars";
@@ -32,14 +34,15 @@ export const AccordionCharacter = ({allies, enemies}: AccordionCharacterProps) =
       {allies &&
         allies.map((ally) => {
           return (
-              //TODO: Add links later to take you to character page
             <WrapItem>
-              <Box m={2}>
+              <LinkBox m={2}>
                 <Center>
-                  <Avatar name={ally.name} src={ally.photoUrl} mx={2} />
-                  <Text>{ally.name}</Text>
+                  <LinkOverlay href={`/avatars/${ally._id}`}>
+                    <Avatar name={ally.name} src={ally.photoUrl} mx={2} />
+                    <Text>{ally.name}</Text>
+                  </LinkOverlay>
                 </Center>
-              </Box>
+              </LinkBox>
             </WrapItem>
           );
         })}
@@ -47,12 +50,14 @@ export const AccordionCharacter = ({allies, enemies}: AccordionCharacterProps) =
         enemies.map((enemy) => {
           return (
             <WrapItem>
-              <Box m={2}>
+              <LinkBox m={2}>
                 <Center>
-                  <Avatar name={enemy.name} src={enemy.photoUrl} mx={2} />
-                  <Text>{enemy.name}</Text>
+                  <LinkOverlay>
+                    <Avatar name={enemy.name} src={enemy.photoUrl} mx={2} />
+                    <Text>{enemy.name}</Text>
+                  </LinkOverlay>
                 </Center>
-              </Box>
+              </LinkBox>
             </WrapItem>
           );
         })}

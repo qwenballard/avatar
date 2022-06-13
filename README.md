@@ -1,17 +1,10 @@
-Why this website?
+## Why this website?
 
+## Tech Stack
 
-
-
-Tech Stack
-
-
-
-
-
-
-Things to do:
+## Things to do:
 - [ ] implement storybook
+- [ ] implement error handling for avatar pages when you can't retrieve data
 - [ ] implement unit tests
 - [ ] setup other client-side routes (ie. nations, characters, etc.)
 - [ ] refactor avatars route and components (build out ui-core)

@@ -1,3 +1,15 @@
+Why this website?
+
+
+
+
+Tech Stack
+
+
+
+
+
+
 Things to do:
 - [ ] implement storybook
 - [ ] implement unit tests

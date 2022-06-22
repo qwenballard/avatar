@@ -39,7 +39,7 @@ export const AvatarPage = () => {
 
   useEffect(() => {
     const characterId = location.pathname.slice(9);
-    fetch(`${lastAirBenderApi}/characters/${characterId}/asdf`)
+    fetch(`${lastAirBenderApi}/characters/${characterId}`)
       .then((result) => result.json())
       .then((result) => {
         setAvatar(result);

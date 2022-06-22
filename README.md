@@ -17,4 +17,5 @@ Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 - [ ] refactor avatars route and components (build out ui-core)
 - [ ] add backend Node.js server and refactor to be monolith or microservice (if microservice, dockerize containers for frontend and backend)
 - [ ] deploy dockerized containers to Heroku
+
 ~~- [ ] Implement search bar functionality on home page~~

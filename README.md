@@ -7,6 +7,7 @@ Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 
 ## Things to do:
 - [ ] get rid of unnecessary curly brackets throughout application (.ie { })
+- [ ] refactor the home page with a new hero and additional info
 - [x] implement super basic error handling for avatar pages when you can't retrieve data
 - [ ] refactor error handling and create custom component for ui-core
 - [ ] implement unit tests

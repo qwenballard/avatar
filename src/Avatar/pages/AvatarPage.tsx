@@ -22,7 +22,6 @@ import {
   AlertIcon,
   AlertTitle,
 } from "@chakra-ui/react";
-import { useToast } from '@chakra-ui/react';
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { AvatarType } from "../avatars";
@@ -36,7 +35,6 @@ export const AvatarPage = () => {
   const [error, setError] =useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   
-  const toast = useToast()
   const location = useLocation();
 
   useEffect(() => {

@@ -10,14 +10,14 @@ import {
   theme,
 } from "@chakra-ui/react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./Navbar";
+import Navbar from "./ui-core/Navbar";
 import { Home } from "./Home/pages/Home";
 import { AvatarPage } from "./Avatar/pages/AvatarPage";
 import { AvatarsPage } from "./Avatar/pages/AvatarsPage";
 import { NotFound } from "./NotFound";
 import { Footer } from "./Footer";
-import { NationPage } from "./Nation/pages/NationPage";
-import { NationsPage } from "./Nation/pages/NationsPage";
+// import { NationPage } from "./Nation/pages/NationPage";
+// import { NationsPage } from "./Nation/pages/NationsPage";
 
 export const App = () => (
   <BrowserRouter>
@@ -30,8 +30,8 @@ export const App = () => (
           <Route path="*" element={<NotFound />} />
           <Route path="avatars" element={<AvatarsPage />} />
           <Route path="avatars/:avatarId" element={<AvatarPage />} />
-          <Route path="nations" element={<NationsPage />} />
-          <Route path="nations/:nationsId" element={<NationPage />} />
+          {/* <Route path="nations" element={<NationsPage />} />
+          <Route path="nations/:nationsId" element={<NationPage />} /> */}
         </Routes>
       </Box>
       <Box my={20}>

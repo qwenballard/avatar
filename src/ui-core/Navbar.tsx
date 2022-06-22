@@ -17,10 +17,10 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { Link as NavigationLink  } from "react-router-dom";
-import { ColorModeSwitcher } from "./ColorModeSwitcher";
+import { ColorModeSwitcher } from "../ColorModeSwitcher";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
-const Links = ["home", "avatars", "nations"];
+const Links = ["home", "avatars"];
 
 const NavLink = ({ children }: { children: ReactNode }) => {
   return (

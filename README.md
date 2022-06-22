@@ -12,10 +12,11 @@ Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 - [x] implement super basic error handling for avatar pages when you can't retrieve data
 - [ ] refactor error handling and create custom component for ui-core
 - [ ] implement unit tests
+- [ ] implement cd/ci using github actions and Heroku
 - [ ] implement storybook
 - [ ] setup other client-side routes (ie. nations, characters, etc.)
 - [ ] refactor avatars route and components (build out ui-core)
 - [ ] add backend Node.js server and refactor to be monolith or microservice (if microservice, dockerize containers for frontend and backend)
-- [ ] deploy dockerized containers to Heroku
+- [ ] push & deploy dockerized containers to Heroku using github actions
 
 ~~- [ ] Implement search bar functionality on home page~~

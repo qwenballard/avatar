@@ -1,12 +1,12 @@
-import { useState } from 'react';
 import { SearchIcon } from '@chakra-ui/icons';
 import {
-  Center,
   Box,
+  Center,
   Input,
   InputGroup,
   InputLeftElement,
 } from '@chakra-ui/react';
+import { useState } from 'react';
 
 export const SearchBar = () => {
   const [character, setCharacter] = useState<string>('');
@@ -16,6 +16,7 @@ export const SearchBar = () => {
   return (
     <Box>
       <Center>
+        {/* TODO: pick back up here */}
         <Box m={10} width="sm" height="auto" justifyContent="center">
           <InputGroup>
             <InputLeftElement

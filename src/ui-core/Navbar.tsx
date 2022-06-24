@@ -13,6 +13,7 @@ import {
 import { ReactNode } from 'react';
 import { Link as NavigationLink } from 'react-router-dom';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
+import { SearchBar } from '../Home/components/SearchBar';
 
 const Links = ['home', 'avatars'];
 
@@ -68,6 +69,7 @@ export default function Simple() {
             </HStack>
           </HStack>
           <Flex alignItems={'center'}>
+            <SearchBar />
             <ColorModeSwitcher justifySelf="flex-end" />
           </Flex>
         </Flex>

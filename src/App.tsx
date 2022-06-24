@@ -1,21 +1,12 @@
-import * as React from "react";
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from "@chakra-ui/react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./ui-core/Navbar";
-import { Home } from "./Home/pages/Home";
-import { AvatarPage } from "./Avatar/pages/AvatarPage";
-import { AvatarsPage } from "./Avatar/pages/AvatarsPage";
-import { NotFound } from "./NotFound";
-import { Footer } from "./Footer";
+import { Box, ChakraProvider, theme } from '@chakra-ui/react';
+import * as React from 'react';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { AvatarPage } from './Avatar/pages/AvatarPage';
+import { AvatarsPage } from './Avatar/pages/AvatarsPage';
+import { Footer } from './Footer';
+import { Home } from './Home/pages/Home';
+import { NotFound } from './NotFound';
+import Navbar from './ui-core/Navbar';
 // import { NationPage } from "./Nation/pages/NationPage";
 // import { NationsPage } from "./Nation/pages/NationsPage";
 

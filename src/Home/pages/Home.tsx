@@ -1,6 +1,5 @@
-import { Box } from "@chakra-ui/react";
-import { SearchBar } from "../components/SearchBar";
-import { Hero } from "../components/Hero";
+import { Box } from '@chakra-ui/react';
+import { Hero } from '../components/Hero';
 
 export const Home = () => {
   return (

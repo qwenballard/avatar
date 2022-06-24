@@ -1,9 +1,15 @@
-import { useState } from "react";
-import { SearchIcon } from "@chakra-ui/icons";
-import { Center, Box, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { useState } from 'react';
+import { SearchIcon } from '@chakra-ui/icons';
+import {
+  Center,
+  Box,
+  Input,
+  InputGroup,
+  InputLeftElement,
+} from '@chakra-ui/react';
 
 export const SearchBar = () => {
-  const [character, setCharacter] = useState<string>("");
+  const [character, setCharacter] = useState<string>('');
   const handleChange = (event: { target: { value: string } }) =>
     setCharacter(event.target.value);
 
@@ -25,8 +31,7 @@ export const SearchBar = () => {
           </InputGroup>
         </Box>
       </Center>
-      <Center>
-      </Center>
+      <Center></Center>
     </Box>
   );
 };

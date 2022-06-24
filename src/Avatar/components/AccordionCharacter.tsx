@@ -1,34 +1,23 @@
 import {
   Avatar,
-  Text,
-  Badge,
-  Box,
-  Button,
   Center,
-  Heading,
-  Link,
-  Stack,
-  useColorModeValue,
-  HStack,
-  Flex,
-  VStack,
-  SimpleGrid,
-  WrapItem,
-  Wrap,
-  LinkOverlay,
   LinkBox,
-} from "@chakra-ui/react";
-import { useEffect, useState } from "react";
-import { AvatarType } from "../avatars";
-import { lastAirBenderApi } from "../constants";
+  LinkOverlay,
+  Text,
+  Wrap,
+  WrapItem,
+} from '@chakra-ui/react';
+import { AvatarType } from '../avatars';
 
 interface AccordionCharacterProps {
   allies?: AvatarType[] | undefined;
   enemies?: AvatarType[] | undefined;
 }
 
-export const AccordionCharacter = ({allies, enemies}: AccordionCharacterProps) => {
-
+export const AccordionCharacter = ({
+  allies,
+  enemies,
+}: AccordionCharacterProps) => {
   return (
     <Wrap>
       {allies &&

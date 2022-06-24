@@ -1,16 +1,14 @@
 import {
+  Box,
   ButtonGroup,
-  Container,
   IconButton,
+  Image,
   Stack,
   Text,
-  Image,
-  Box,
   useColorModeValue,
-  Flex
-} from "@chakra-ui/react";
-import * as React from "react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+} from '@chakra-ui/react';
+import * as React from 'react';
+import { FaGithub } from 'react-icons/fa';
 
 export const Footer = () => (
   <Box
@@ -21,10 +19,10 @@ export const Footer = () => (
     as="footer"
     role="contentinfo"
     px={10}
-    py={{ base: "2", md: "2" }}
-    bg={useColorModeValue("gray.100", "gray.900")}
+    py={{ base: '2', md: '2' }}
+    bg={useColorModeValue('gray.100', 'gray.900')}
   >
-    <Stack spacing={{ base: "4", md: "5" }}>
+    <Stack spacing={{ base: '4', md: '5' }}>
       <Stack justify="space-between" direction="row" align="center">
         <Image
           src="/avatarlogo.png"

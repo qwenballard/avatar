@@ -1,11 +1,13 @@
 ## Why this website?
 
 ## Tech Stack
+
 Currently built in React, Typescript, Chakra-UI.
 
 Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 
 ## Things to do:
+
 - [ ] get rid of unnecessary curly brackets throughout application (.ie { })
 - [ ] refactor the home page with a new hero and additional info
 - [ ] move commented out search bar to the navbar

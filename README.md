@@ -18,6 +18,7 @@ Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 - [ ] implement storybook
 - [ ] setup other client-side routes (ie. nations, characters, etc.)
 - [ ] refactor avatars route and components (build out ui-core)
+- [ ] dashboard of statistics for various stats
 - [ ] add backend Node.js server and refactor to be monolith or microservice (if microservice, dockerize containers for frontend and backend)
 - [ ] push & deploy dockerized containers to Heroku using github actions
 

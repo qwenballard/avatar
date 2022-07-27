@@ -1,5 +1,6 @@
 import { Box, Center, Flex, Spinner } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+import { useErrorHandler } from 'react-error-boundary';
 import { AvatarType } from '../avatars';
 import { CharacterCard } from '../components/CharacterCard';
 import { lastAirBenderApi } from '../constants';
@@ -7,6 +8,7 @@ import { lastAirBenderApi } from '../constants';
 export const AvatarsPage = () => {
   const [avatars, setAvatars] = useState<Array<AvatarType>>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const handleError = useErrorHandler();
 
   useEffect(() => {
     fetch(`${lastAirBenderApi}/characters/avatar`)
@@ -14,6 +16,10 @@ export const AvatarsPage = () => {
       .then((results) => {
         setAvatars(results);
         setLoading(false);
+      })
+      .catch((error) => {
+        console.log(`error: ${error}`);
+        handleError(error);
       });
   }, []);
 

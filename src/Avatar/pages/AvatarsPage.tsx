@@ -1,13 +1,12 @@
-import { Box, Center, Flex, Spinner } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { useErrorHandler } from 'react-error-boundary';
 import { AvatarType } from '../avatars';
 import { CharacterCard } from '../components/CharacterCard';
 import { lastAirBenderApi } from '../constants';
 
-export const AvatarsPage = () => {
+const AvatarsPage = () => {
   const [avatars, setAvatars] = useState<Array<AvatarType>>([]);
-  const [loading, setLoading] = useState<boolean>(true);
   const handleError = useErrorHandler();
 
   useEffect(() => {
@@ -15,7 +14,6 @@ export const AvatarsPage = () => {
       .then((results) => results.json())
       .then((results) => {
         setAvatars(results);
-        setLoading(false);
       })
       .catch((error) => {
         console.log(`error: ${error}`);
@@ -25,24 +23,13 @@ export const AvatarsPage = () => {
 
   return (
     <Box mx={'auto'}>
-      {loading ? (
-        //TODO: Create Center Spinner Component in UI-Core
-        <Center h={'500px'}>
-          <Spinner
-            thickness="4px"
-            speed="1s"
-            emptyColor="gray.200"
-            color="blue.500"
-            size="xl"
-          />
-        </Center>
-      ) : (
-        <Flex flexWrap={'wrap'} justifyContent={'center'} flexDirection={'row'}>
-          {avatars.map((avatar) => {
-            return <CharacterCard key={avatar._id} avatar={avatar} />;
-          })}
-        </Flex>
-      )}
+      <Flex flexWrap={'wrap'} justifyContent={'center'} flexDirection={'row'}>
+        {avatars.map((avatar) => {
+          return <CharacterCard key={avatar._id} avatar={avatar} />;
+        })}
+      </Flex>
     </Box>
   );
 };
+
+export default AvatarsPage;

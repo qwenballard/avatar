@@ -28,7 +28,7 @@ import { AvatarType } from '../avatars';
 import { AccordionCharacter } from '../components/AccordionCharacter';
 import { lastAirBenderApi } from '../constants';
 
-export const AvatarPage = () => {
+const AvatarPage = () => {
   const [avatar, setAvatar] = useState<AvatarType>();
   const [allies, setAllies] = useState<AvatarType[]>();
   const [enemies, setEnemies] = useState<AvatarType[]>();
@@ -309,3 +309,5 @@ export const AvatarPage = () => {
     </Box>
   );
 };
+
+export default AvatarPage;

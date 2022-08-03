@@ -1,5 +1,7 @@
 import { Box } from '@chakra-ui/react';
 
-export const NotFound = () => {
+const NotFound = () => {
   return <Box>Not Found!</Box>;
 };
+
+export default NotFound;

@@ -28,7 +28,7 @@ import { AvatarType } from '../avatars';
 import { AccordionCharacter } from '../components/AccordionCharacter';
 import { lastAirBenderApi } from '../constants';
 
-export const AvatarPage = () => {
+const AvatarPage = () => {
   const [avatar, setAvatar] = useState<AvatarType>();
   const [allies, setAllies] = useState<AvatarType[]>();
   const [enemies, setEnemies] = useState<AvatarType[]>();
@@ -250,7 +250,11 @@ export const AvatarPage = () => {
                         </AccordionButton>
                       </h2>
                       <AccordionPanel pb={4}>
-                        <AccordionCharacter allies={allies} />
+                        {allies?.length !== 0 ? (
+                          <AccordionCharacter allies={allies} />
+                        ) : (
+                          <Text>Has no allies</Text>
+                        )}
                       </AccordionPanel>
                     </AccordionItem>
                     <AccordionItem>
@@ -275,7 +279,11 @@ export const AvatarPage = () => {
                         </AccordionButton>
                       </h2>
                       <AccordionPanel pb={4}>
-                        <AccordionCharacter enemies={enemies} />
+                        {enemies?.length !== 0 ? (
+                          <AccordionCharacter enemies={enemies} />
+                        ) : (
+                          <Text>Has no enemies</Text>
+                        )}
                       </AccordionPanel>
                     </AccordionItem>
                   </Accordion>
@@ -309,3 +317,5 @@ export const AvatarPage = () => {
     </Box>
   );
 };
+
+export default AvatarPage;

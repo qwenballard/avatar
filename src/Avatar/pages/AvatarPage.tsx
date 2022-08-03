@@ -250,7 +250,11 @@ const AvatarPage = () => {
                         </AccordionButton>
                       </h2>
                       <AccordionPanel pb={4}>
-                        <AccordionCharacter allies={allies} />
+                        {allies?.length !== 0 ? (
+                          <AccordionCharacter allies={allies} />
+                        ) : (
+                          <Text>Has no allies</Text>
+                        )}
                       </AccordionPanel>
                     </AccordionItem>
                     <AccordionItem>
@@ -275,7 +279,11 @@ const AvatarPage = () => {
                         </AccordionButton>
                       </h2>
                       <AccordionPanel pb={4}>
-                        <AccordionCharacter enemies={enemies} />
+                        {enemies?.length !== 0 ? (
+                          <AccordionCharacter enemies={enemies} />
+                        ) : (
+                          <Text>Has no enemies</Text>
+                        )}
                       </AccordionPanel>
                     </AccordionItem>
                   </Accordion>

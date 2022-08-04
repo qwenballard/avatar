@@ -19,7 +19,7 @@ const AvatarsPage = () => {
       .catch((error) => {
         handleError(error);
       });
-  }, [avatars]);
+  }, [avatars, handleError]);
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>

@@ -16,6 +16,7 @@ Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 - [x] refactor error handling, reorganize components to be apart of the ui-core
 - [x] setup character client-side routes
 - [ ] implement pagination on charactersPage
+- [ ] implement redux rtkQuery
 - [ ] setup nations client-side routes
 - [ ] move commented out search bar to the navbar
 - [ ] implement unit tests

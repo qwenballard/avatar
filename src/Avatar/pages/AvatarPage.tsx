@@ -51,7 +51,6 @@ const AvatarPage = () => {
       .then((result) => result.json())
       .then((result) => {
         setAllies(result);
-        throw new Error('notworking');
       })
       .catch((error) => {
         handleError(error);

@@ -1,8 +1,9 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { useErrorHandler } from 'react-error-boundary';
+import { ErrorBoundary, useErrorHandler } from 'react-error-boundary';
+import { CharacterCard } from '../../ui-core/CharacterCard';
+import { ErrorFallback } from '../../ui-core/ErrorBoundary';
 import { AvatarType } from '../avatars';
-import { CharacterCard } from '../components/CharacterCard';
 import { lastAirBenderApi } from '../constants';
 
 const AvatarsPage = () => {
@@ -16,19 +17,20 @@ const AvatarsPage = () => {
         setAvatars(results);
       })
       .catch((error) => {
-        console.log(`error: ${error}`);
         handleError(error);
       });
-  }, []);
+  }, [avatars]);
 
   return (
-    <Box mx={'auto'}>
-      <Flex flexWrap={'wrap'} justifyContent={'center'} flexDirection={'row'}>
-        {avatars.map((avatar) => {
-          return <CharacterCard key={avatar._id} avatar={avatar} />;
-        })}
-      </Flex>
-    </Box>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <Box mx={'auto'}>
+        <Flex flexWrap={'wrap'} justifyContent={'center'} flexDirection={'row'}>
+          {avatars.map((avatar) => {
+            return <CharacterCard key={avatar._id} avatar={avatar} />;
+          })}
+        </Flex>
+      </Box>
+    </ErrorBoundary>
   );
 };
 

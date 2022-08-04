@@ -1,7 +1,7 @@
 import { Box, Center, ChakraProvider, Spinner, theme } from '@chakra-ui/react';
-import React, { lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { Footer } from './Footer';
 import { ErrorFallback } from './ui-core/ErrorBoundary';
 import Navbar from './ui-core/Navbar';
@@ -11,11 +11,18 @@ const NotFound = lazy(() => import('./NotFound'));
 const AvatarsPage = lazy(() => import('./Avatar/pages/AvatarsPage'));
 const AvatarPage = lazy(() => import('./Avatar/pages/AvatarPage'));
 
-export const App = () => (
-  <BrowserRouter>
+export const App = () => {
+  let navigate = useNavigate();
+
+  return (
     <ChakraProvider theme={theme}>
       <Navbar />
-      <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <ErrorBoundary
+        FallbackComponent={ErrorFallback}
+        onReset={() => {
+          navigate('/home');
+        }}
+      >
         <Suspense
           fallback={
             <Center>
@@ -43,5 +50,5 @@ export const App = () => (
         </Suspense>
       </ErrorBoundary>
     </ChakraProvider>
-  </BrowserRouter>
-);
+  );
+};

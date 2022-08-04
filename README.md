@@ -11,8 +11,9 @@ Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 - [x] setup eslint and prettier
 - [x] implement super basic error handling for avatar pages when you can't retrieve data
 - [x] refactor the home page with a new hero and additional info (maybe refactored again in the future)
+- [x] update not found page
 - [ ] move commented out search bar to the navbar
-- [ ] refactor error handling and create custom component for ui-core
+- [x] refactor error handling, reorganize components to be apart of the ui-core
 - [ ] implement unit tests
 - [ ] implement cd/ci using github actions and Heroku
 - [ ] implement storybook

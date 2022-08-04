@@ -7,7 +7,7 @@ import {
   Wrap,
   WrapItem,
 } from '@chakra-ui/react';
-import { AvatarType } from '../avatars';
+import { AvatarType } from '../Avatar/avatars';
 
 interface AccordionCharacterProps {
   allies?: AvatarType[] | undefined;

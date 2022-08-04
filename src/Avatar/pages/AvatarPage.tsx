@@ -4,10 +4,6 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
-  Alert,
-  AlertDescription,
-  AlertIcon,
-  AlertTitle,
   Box,
   Button,
   Center,
@@ -23,19 +19,20 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+import { ErrorBoundary, useErrorHandler } from 'react-error-boundary';
 import { useLocation } from 'react-router-dom';
+import { AccordionCharacter } from '../../ui-core/AccordionCharacter';
+import { ErrorFallback } from '../../ui-core/ErrorBoundary';
 import { AvatarType } from '../avatars';
-import { AccordionCharacter } from '../components/AccordionCharacter';
 import { lastAirBenderApi } from '../constants';
 
 const AvatarPage = () => {
   const [avatar, setAvatar] = useState<AvatarType>();
   const [allies, setAllies] = useState<AvatarType[]>();
   const [enemies, setEnemies] = useState<AvatarType[]>();
-  const [error, setError] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(true);
 
   const location = useLocation();
+  const handleError = useErrorHandler();
   const characterId = location.pathname.slice(9);
 
   useEffect(() => {
@@ -43,13 +40,9 @@ const AvatarPage = () => {
       .then((result) => result.json())
       .then((result) => {
         setAvatar(result);
-        setLoading(false);
-        setError(false);
       })
       .catch((error) => {
-        setError(error);
-        setLoading(false);
-        setError(true);
+        handleError(error);
       });
   }, [characterId]);
 
@@ -60,13 +53,16 @@ const AvatarPage = () => {
         setAllies(result);
       })
       .catch((error) => {
-        console.log(error);
+        handleError(error);
       });
 
     fetch(`${lastAirBenderApi}/characters?enemies=${avatar?.name}`)
       .then((result) => result.json())
       .then((result) => {
         setEnemies(result);
+      })
+      .catch((error) => {
+        handleError(error);
       });
   }, [avatar]);
 
@@ -83,41 +79,22 @@ const AvatarPage = () => {
   };
 
   return (
-    <Box mx={'auto'}>
-      {loading ? (
-        <Box height={'600px'} padding="6" boxShadow="lg" bg="white">
-          <Center>
-            <SkeletonCircle size={'300px'} />
-          </Center>
-          <Skeleton height="40px" mt={5} />
-          <Skeleton height="20px" mt={2} />
-          <Skeleton height="20px" mt={2} />
-          <Skeleton height="20px" mt={2} />
-          <Skeleton height="20px" mt={2} />
-          <Skeleton height="20px" mt={2} />
-        </Box>
-      ) : (
-        <Box>
-          {error ? (
-            <Alert
-              status="error"
-              variant="subtle"
-              flexDirection="column"
-              alignItems="center"
-              justifyContent="center"
-              textAlign="center"
-              height="500px"
-            >
-              <AlertIcon boxSize="40px" mr={0} />
-              <AlertTitle mt={4} mb={1} fontSize="lg">
-                Error
-              </AlertTitle>
-              <AlertDescription maxWidth="sm">
-                There was an error with retrieving the character info. Please
-                try again.
-              </AlertDescription>
-            </Alert>
-          ) : (
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <Box mx={'auto'}>
+        {!avatar || !allies || !enemies ? (
+          <Box height={'600px'} padding="6" boxShadow="lg" bg="white">
+            <Center>
+              <SkeletonCircle size={'300px'} />
+            </Center>
+            <Skeleton height="40px" mt={5} />
+            <Skeleton height="20px" mt={2} />
+            <Skeleton height="20px" mt={2} />
+            <Skeleton height="20px" mt={2} />
+            <Skeleton height="20px" mt={2} />
+            <Skeleton height="20px" mt={2} />
+          </Box>
+        ) : (
+          <Box>
             <SimpleGrid
               columns={{ base: 1, lg: 2 }}
               spacing={{ base: 8, md: 10 }}
@@ -311,10 +288,10 @@ const AvatarPage = () => {
                 </Button>
               </Stack>
             </SimpleGrid>
-          )}
-        </Box>
-      )}
-    </Box>
+          </Box>
+        )}
+      </Box>
+    </ErrorBoundary>
   );
 };
 

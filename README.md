@@ -17,6 +17,7 @@ Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 - [x] setup character client-side routes
 - [ ] implement pagination on charactersPage
 - [ ] implement redux rtkQuery
+- [ ] fix characterCard image sizing (blurry)
 - [ ] setup nations client-side routes
 - [ ] move commented out search bar to the navbar
 - [ ] implement unit tests

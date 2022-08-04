@@ -118,14 +118,6 @@ const CharacterPage = () => {
                   >
                     {character?.name}
                   </Heading>
-                  <Text
-                    //TODO: useColorModeValue("gray.900", "gray.400")
-                    color={'gray.900'}
-                    fontWeight={300}
-                    fontSize={'2xl'}
-                  >
-                    placeholder {/* TODO: Fill in placeholder later */}
-                  </Text>
                 </Box>
 
                 <Stack
@@ -166,7 +158,11 @@ const CharacterPage = () => {
                       fontWeight={'500'}
                       mb={'4'}
                     >
-                      {character?.affiliation}
+                      {character?.affiliation ? (
+                        <Text>{character.affiliation}</Text>
+                      ) : (
+                        <Text>N/A</Text>
+                      )}
                     </Text>
                   </Flex>
                   <Flex>
@@ -194,7 +190,11 @@ const CharacterPage = () => {
                       fontWeight={'500'}
                       mb={'4'}
                     >
-                      {character?.weapon}
+                      {character?.weapon ? (
+                        <Text>{character.weapon}</Text>
+                      ) : (
+                        <Text>N/A</Text>
+                      )}
                     </Text>
                   </Flex>
                 </Stack>

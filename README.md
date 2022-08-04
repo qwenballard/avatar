@@ -14,7 +14,8 @@ Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 - [x] update not found page
 - [x] refactor avatars route and components (build out ui-core)
 - [x] refactor error handling, reorganize components to be apart of the ui-core
-- [ ] setup character client-side routes
+- [x] setup character client-side routes
+- [ ] implement pagination on charactersPage
 - [ ] setup nations client-side routes
 - [ ] move commented out search bar to the navbar
 - [ ] implement unit tests

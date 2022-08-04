@@ -14,7 +14,7 @@ import { ReactNode } from 'react';
 import { Link as NavigationLink } from 'react-router-dom';
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 
-const Links = ['home', 'avatars'];
+const Links = ['Home', 'Avatars', 'Characters'];
 
 const NavLink = ({ children }: { children: ReactNode }) => {
   return (

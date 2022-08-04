@@ -29,7 +29,7 @@ export const AccordionCharacterDropDown = ({
     <Wrap>
       {allies?.map((ally) => {
         return (
-          <WrapItem textAlign="center">
+          <WrapItem textAlign="center" key={ally._id}>
             <LinkBox m={2}>
               <Center>
                 <LinkOverlay href={`/characters/${ally._id}`}>

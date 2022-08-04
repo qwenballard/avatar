@@ -16,33 +16,33 @@ import {
 import { useEffect, useState } from 'react';
 import { ErrorBoundary, useErrorHandler } from 'react-error-boundary';
 import { useLocation } from 'react-router-dom';
+import { AvatarType } from '../../Avatar/type';
 import { AlliesOrEnemiesAccordion } from '../../ui-core/AlliesOrEnemiesAccordion';
 import { ErrorFallback } from '../../ui-core/ErrorBoundary';
 import { lastAirBenderApi } from '../constants';
-import { AvatarType } from '../type';
 
-const AvatarPage = () => {
-  const [avatar, setAvatar] = useState<AvatarType>();
+const CharacterPage = () => {
+  const [character, setCharacters] = useState<AvatarType>();
   const [allies, setAllies] = useState<AvatarType[]>();
   const [enemies, setEnemies] = useState<AvatarType[]>();
 
   const location = useLocation();
   const handleError = useErrorHandler();
-  const avatarId = location.pathname.slice(9);
+  const characterId = location.pathname.slice(12);
 
   useEffect(() => {
-    fetch(`${lastAirBenderApi}/characters/${avatarId}`)
+    fetch(`${lastAirBenderApi}/characters/${characterId}`)
       .then((result) => result.json())
       .then((result) => {
-        setAvatar(result);
+        setCharacters(result);
       })
       .catch((error) => {
         handleError(error);
       });
-  }, [avatarId, handleError]);
+  }, [characterId, handleError]);
 
   useEffect(() => {
-    fetch(`${lastAirBenderApi}/characters?allies=${avatar?.name}`)
+    fetch(`${lastAirBenderApi}/characters?allies=${character?.name}`)
       .then((result) => result.json())
       .then((result) => {
         setAllies(result);
@@ -51,7 +51,7 @@ const AvatarPage = () => {
         handleError(error);
       });
 
-    fetch(`${lastAirBenderApi}/characters?enemies=${avatar?.name}`)
+    fetch(`${lastAirBenderApi}/characters?enemies=${character?.name}`)
       .then((result) => result.json())
       .then((result) => {
         setEnemies(result);
@@ -59,14 +59,14 @@ const AvatarPage = () => {
       .catch((error) => {
         handleError(error);
       });
-  }, [avatar, handleError]);
+  }, [character, handleError]);
 
   const renderPositionOrProfession = () => {
     let position = '';
-    if (avatar?.position) {
-      position = avatar.position;
-    } else if (avatar?.profession) {
-      position = avatar.profession;
+    if (character?.position) {
+      position = character.position;
+    } else if (character?.profession) {
+      position = character.profession;
     } else {
       return position;
     }
@@ -76,7 +76,7 @@ const AvatarPage = () => {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Box mx={'auto'}>
-        {!avatar || !allies || !enemies ? (
+        {!character || !allies || !enemies ? (
           <Box height={'600px'} padding="6" boxShadow="lg" bg="white">
             <Center>
               <SkeletonCircle size={'300px'} />
@@ -98,7 +98,7 @@ const AvatarPage = () => {
               <Image
                 rounded={'md'}
                 alt={'product image'}
-                src={avatar?.photoUrl}
+                src={character?.photoUrl}
                 fallbackSrc={'/avatarplaceholder.png'}
                 fit={'cover'}
                 align={'center'}
@@ -116,7 +116,7 @@ const AvatarPage = () => {
                       lg: '5xl',
                     }}
                   >
-                    {avatar?.name}
+                    {character?.name}
                   </Heading>
                   <Text
                     //TODO: useColorModeValue("gray.900", "gray.400")
@@ -124,7 +124,7 @@ const AvatarPage = () => {
                     fontWeight={300}
                     fontSize={'2xl'}
                   >
-                    placeholder
+                    placeholder {/* TODO: Fill in placeholder later */}
                   </Text>
                 </Box>
 
@@ -166,7 +166,7 @@ const AvatarPage = () => {
                       fontWeight={'500'}
                       mb={'4'}
                     >
-                      {avatar?.affiliation}
+                      {character?.affiliation}
                     </Text>
                   </Flex>
                   <Flex>
@@ -194,7 +194,7 @@ const AvatarPage = () => {
                       fontWeight={'500'}
                       mb={'4'}
                     >
-                      {avatar?.weapon}
+                      {character?.weapon}
                     </Text>
                   </Flex>
                 </Stack>
@@ -218,9 +218,9 @@ const AvatarPage = () => {
                     transform: 'translateY(2px)',
                     boxShadow: 'lg',
                   }}
-                  href={`https://avatar.fandom.com/wiki/${avatar?.name}?so=search`}
+                  href={`https://avatar.fandom.com/wiki/${character?.name}?so=search`}
                 >
-                  Official Avatar Wiki for {avatar?.name}
+                  Official Avatar Wiki for {character?.name}
                 </Button>
               </Stack>
             </SimpleGrid>
@@ -231,4 +231,4 @@ const AvatarPage = () => {
   );
 };
 
-export default AvatarPage;
+export default CharacterPage;

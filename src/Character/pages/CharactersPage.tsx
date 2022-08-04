@@ -1,32 +1,33 @@
 import { Box, Flex } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
 import { ErrorBoundary, useErrorHandler } from 'react-error-boundary';
+import { AvatarType } from '../../Avatar/type';
 import { CharacterCard } from '../../ui-core/CharacterCard';
 import { ErrorFallback } from '../../ui-core/ErrorBoundary';
 import { lastAirBenderApi } from '../constants';
-import { AvatarType } from '../type';
 
-const AvatarsPage = () => {
-  const [avatars, setAvatars] = useState<Array<AvatarType>>([]);
+const CharactersPage = () => {
+  const [characters, setCharacters] = useState<Array<AvatarType>>([]);
   const handleError = useErrorHandler();
 
   useEffect(() => {
-    fetch(`${lastAirBenderApi}/characters/avatar`)
+    console.log(`${lastAirBenderApi}/characters`);
+    fetch(`${lastAirBenderApi}/characters`)
       .then((results) => results.json())
       .then((results) => {
-        setAvatars(results);
+        setCharacters(results);
       })
       .catch((error) => {
         handleError(error);
       });
-  }, [avatars]);
+  }, [characters]);
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Box mx={'auto'}>
         <Flex flexWrap={'wrap'} justifyContent={'center'} flexDirection={'row'}>
-          {avatars.map((avatar) => {
-            return <CharacterCard key={avatar._id} character={avatar} />;
+          {characters.map((character) => {
+            return <CharacterCard key={character._id} character={character} />;
           })}
         </Flex>
       </Box>
@@ -34,4 +35,4 @@ const AvatarsPage = () => {
   );
 };
 
-export default AvatarsPage;
+export default CharactersPage;

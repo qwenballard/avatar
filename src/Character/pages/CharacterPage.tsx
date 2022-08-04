@@ -95,29 +95,35 @@ const CharacterPage = () => {
               spacing={{ base: 8, md: 10 }}
               py={{ base: 18, md: 24 }}
             >
-              <Image
-                rounded={'md'}
-                alt={'product image'}
-                src={character?.photoUrl}
-                fallbackSrc={'/avatarplaceholder.png'}
-                fit={'cover'}
-                align={'center'}
-                w={'100%'}
-                h={{ base: '100%', sm: '400px', lg: '500px' }}
-              />
+              <Center>
+                {' '}
+                <Image
+                  rounded={'md'}
+                  alt={`${character?.name}`}
+                  src={character?.photoUrl}
+                  fallbackSrc={'/avatarplaceholder.png'}
+                  fit={'cover'}
+                  align={'center'}
+                  mb={{ base: '0', lg: '260px' }}
+                  w={{ base: '50%', lg: '76%' }}
+                  h={{ base: '100%', sm: '100%', lg: '53%' }}
+                />
+              </Center>
               <Stack spacing={{ base: 6, md: 10 }}>
                 <Box as={'header'}>
-                  <Heading
-                    lineHeight={1.1}
-                    fontWeight={600}
-                    fontSize={{
-                      base: '2xl',
-                      sm: '4xl',
-                      lg: '5xl',
-                    }}
-                  >
-                    {character?.name}
-                  </Heading>
+                  <Center>
+                    <Heading
+                      lineHeight={1.1}
+                      fontWeight={600}
+                      fontSize={{
+                        base: '2xl',
+                        sm: '4xl',
+                        lg: '5xl',
+                      }}
+                    >
+                      {character?.name}
+                    </Heading>
+                  </Center>
                 </Box>
 
                 <Stack
@@ -131,7 +137,16 @@ const CharacterPage = () => {
                   }
                 >
                   <VStack spacing={{ base: 4, sm: 6 }}>
-                    <Text fontSize={'lg'}>{renderPositionOrProfession()}</Text>
+                    <Text
+                      as="i"
+                      fontSize={'25px'}
+                      color={'yellow.500'}
+                      fontWeight={'500'}
+                      mb={'2'}
+                      mr={1}
+                    >
+                      {renderPositionOrProfession()}
+                    </Text>
                   </VStack>
                   <Flex>
                     <Text
@@ -144,6 +159,7 @@ const CharacterPage = () => {
                       fontWeight={'500'}
                       textTransform={'uppercase'}
                       mb={'4'}
+                      ml={4}
                       mr={1}
                     >
                       Affiliation:
@@ -177,6 +193,7 @@ const CharacterPage = () => {
                       textTransform={'uppercase'}
                       mb={'4'}
                       mr={1}
+                      ml={3}
                     >
                       Weapon:
                     </Text>

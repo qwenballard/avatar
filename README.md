@@ -12,13 +12,14 @@ Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 - [x] implement super basic error handling for avatar pages when you can't retrieve data
 - [x] refactor the home page with a new hero and additional info (maybe refactored again in the future)
 - [x] update not found page
-- [ ] move commented out search bar to the navbar
+- [x] refactor avatars route and components (build out ui-core)
 - [x] refactor error handling, reorganize components to be apart of the ui-core
+- [ ] setup character client-side routes
+- [ ] setup nations client-side routes
+- [ ] move commented out search bar to the navbar
 - [ ] implement unit tests
 - [ ] implement cd/ci using github actions and Heroku
 - [ ] implement storybook
-- [ ] setup other client-side routes (ie. nations, characters, etc.)
-- [ ] refactor avatars route and components (build out ui-core)
 - [ ] dashboard of statistics for various stats (ie. # of characters, broken down by nation, etc.)
 - visual of the ATLA worldmap
 - [ ] add backend Node.js server and refactor to be monolith or microservice (if microservice, dockerize containers for frontend and backend)

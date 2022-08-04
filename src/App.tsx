@@ -9,7 +9,6 @@ import Navbar from './ui-core/Navbar';
 const Home = lazy(() => import('./Home/pages/Home'));
 const NotFound = lazy(() => import('./NotFound'));
 const AvatarsPage = lazy(() => import('./Avatar/pages/AvatarsPage'));
-const AvatarPage = lazy(() => import('./Avatar/pages/AvatarPage'));
 const CharactersPage = lazy(() => import('./Character/pages/CharactersPage'));
 const CharacterPage = lazy(() => import('./Character/pages/CharacterPage'));
 
@@ -44,7 +43,6 @@ export const App = () => {
             <Route path="/home" element={<Home />} />
             <Route path="*" element={<NotFound />} />
             <Route path="avatars" element={<AvatarsPage />} />
-            <Route path="avatars/:avatarId" element={<AvatarPage />} />
             <Route path="characters" element={<CharactersPage />} />
             <Route path="characters/:characterId" element={<CharacterPage />} />
           </Routes>

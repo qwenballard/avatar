@@ -8,7 +8,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import { AvatarType } from '../avatars.js';
+import { AvatarType } from '../Avatar/avatars.js';
 
 interface CharacterCardProps {
   avatar: AvatarType;
@@ -17,7 +17,7 @@ interface CharacterCardProps {
 export const CharacterCard = ({ avatar }: CharacterCardProps) => {
   let navigate = useNavigate();
 
-  function viewAvatarProfile(_id: string) {
+  function viewCharacterProfile(_id: string) {
     navigate(`/avatars/${avatar._id}`);
   }
 
@@ -58,7 +58,7 @@ export const CharacterCard = ({ avatar }: CharacterCardProps) => {
             bg: 'blue.500',
           }}
           onClick={() => {
-            viewAvatarProfile(avatar._id);
+            viewCharacterProfile(avatar._id);
           }}
           aria-label={'View Profile'}
         >

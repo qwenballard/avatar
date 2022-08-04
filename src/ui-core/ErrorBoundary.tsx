@@ -3,13 +3,16 @@ import {
   AlertDescription,
   AlertIcon,
   AlertTitle,
-  Image,
+  Button,
   VStack,
 } from '@chakra-ui/react';
 import { ComponentType } from 'react';
 import { FallbackProps } from 'react-error-boundary';
 
-export const ErrorFallback: ComponentType<FallbackProps> = ({ error }) => {
+export const ErrorFallback: ComponentType<FallbackProps> = ({
+  error,
+  resetErrorBoundary,
+}) => {
   return (
     <VStack>
       <Alert
@@ -19,7 +22,7 @@ export const ErrorFallback: ComponentType<FallbackProps> = ({ error }) => {
         alignItems="center"
         justifyContent="center"
         textAlign="center"
-        height="200px"
+        height="350px"
         width="70%"
         mt="40px"
       >
@@ -27,17 +30,22 @@ export const ErrorFallback: ComponentType<FallbackProps> = ({ error }) => {
         <AlertTitle mt={4} mb={1} fontSize="lg">
           Oops! Something went wrong!
         </AlertTitle>
-        <AlertDescription maxWidth="sm">
-          Please try refreshing the page. If this issue persists, please email
-          me at qwen.ballard@gmail.com
+        <AlertDescription maxWidth="sm" mb="20px">
+          Please try refreshing the page or clicking the button below to be
+          redirected back to the home page.
         </AlertDescription>
+        <Button
+          onClick={resetErrorBoundary}
+          size="md"
+          height="48px"
+          width="100px"
+          border="2px"
+          borderColor="red.500"
+          colorScheme="red"
+        >
+          Go Home
+        </Button>
       </Alert>
-      <Image
-        mt="-100px"
-        alt="Error Gif"
-        objectFit="contain"
-        src="errorImage.gif"
-      />
     </VStack>
   );
 };

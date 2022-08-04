@@ -9,15 +9,22 @@ import {
 } from '@chakra-ui/react';
 import { AvatarType } from '../Avatar/avatars';
 
-interface AccordionCharacterProps {
+interface AccordionCharacterDropDownProps {
   allies?: AvatarType[] | undefined;
   enemies?: AvatarType[] | undefined;
 }
 
-export const AccordionCharacter = ({
+/*
+  This component is used to render either the allies dropdown
+  component or the enemy dropdown component.
+
+  Both components are grouped together in the
+  AlliesOrEnemiesAccordion.
+*/
+export const AccordionCharacterDropDown = ({
   allies,
   enemies,
-}: AccordionCharacterProps) => {
+}: AccordionCharacterDropDownProps) => {
   return (
     <Wrap>
       {allies?.map((ally) => {

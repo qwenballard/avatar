@@ -1,9 +1,4 @@
 import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
   Box,
   Button,
   Center,
@@ -21,7 +16,7 @@ import {
 import { useEffect, useState } from 'react';
 import { ErrorBoundary, useErrorHandler } from 'react-error-boundary';
 import { useLocation } from 'react-router-dom';
-import { AccordionCharacter } from '../../ui-core/AccordionCharacter';
+import { AlliesOrEnemiesAccordion } from '../../ui-core/AlliesOrEnemiesAccordion';
 import { ErrorFallback } from '../../ui-core/ErrorBoundary';
 import { AvatarType } from '../avatars';
 import { lastAirBenderApi } from '../constants';
@@ -204,66 +199,7 @@ const AvatarPage = () => {
                   </Flex>
                 </Stack>
                 <Stack>
-                  <Accordion allowToggle>
-                    <AccordionItem>
-                      <h2>
-                        <AccordionButton>
-                          <Box flex="1" textAlign="left">
-                            <Text
-                              fontSize={{
-                                base: '16px',
-                                lg: '18px',
-                              }}
-                              //TODO: useColorModeValue("yellow.500", "yellow.300")
-                              color={'yellow.500'}
-                              fontWeight={'500'}
-                              textTransform={'uppercase'}
-                              mb={'4'}
-                            >
-                              Allies:
-                            </Text>
-                          </Box>
-                          <AccordionIcon />
-                        </AccordionButton>
-                      </h2>
-                      <AccordionPanel pb={4}>
-                        {allies?.length !== 0 ? (
-                          <AccordionCharacter allies={allies} />
-                        ) : (
-                          <Text>Has no allies</Text>
-                        )}
-                      </AccordionPanel>
-                    </AccordionItem>
-                    <AccordionItem>
-                      <h2>
-                        <AccordionButton>
-                          <Box flex="1" textAlign="left">
-                            <Text
-                              fontSize={{
-                                base: '16px',
-                                lg: '18px',
-                              }}
-                              //TODO: useColorModeValue("yellow.500", "yellow.300")
-                              color={'yellow.500'}
-                              fontWeight={'500'}
-                              textTransform={'uppercase'}
-                              mb={'4'}
-                            >
-                              Enemies:
-                            </Text>
-                          </Box>
-                          <AccordionIcon />
-                        </AccordionButton>
-                      </h2>
-                      <AccordionPanel pb={4}>
-                        {enemies?.length !== 0 ? (
-                          <AccordionCharacter enemies={enemies} />
-                        ) : (
-                          <Text>Has no enemies</Text>
-                        )}
-                      </AccordionPanel>
-                    </AccordionItem>
-                  </Accordion>
+                  <AlliesOrEnemiesAccordion allies={allies} enemies={enemies} />
                 </Stack>
 
                 <Button

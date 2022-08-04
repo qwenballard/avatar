@@ -8,7 +8,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import { AvatarType } from '../Avatar/avatars.js';
+import { AvatarType } from '../Avatar/type.js';
 
 interface CharacterCardProps {
   avatar: AvatarType;

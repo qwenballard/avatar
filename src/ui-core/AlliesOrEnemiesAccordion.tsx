@@ -7,7 +7,7 @@ import {
   Box,
   Text,
 } from '@chakra-ui/react';
-import { AvatarType } from '../Avatar/avatars';
+import { AvatarType } from '../Avatar/type';
 import { AccordionCharacterDropDown } from './AccordionCharacterDropDown';
 
 interface AlliesOrEnemiesAccordionProps {

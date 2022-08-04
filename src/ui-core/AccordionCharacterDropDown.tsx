@@ -7,7 +7,7 @@ import {
   Wrap,
   WrapItem,
 } from '@chakra-ui/react';
-import { AvatarType } from '../Avatar/avatars';
+import { AvatarType } from '../Avatar/type';
 
 interface AccordionCharacterDropDownProps {
   allies?: AvatarType[] | undefined;

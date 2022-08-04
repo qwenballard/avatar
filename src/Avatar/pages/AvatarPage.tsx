@@ -18,8 +18,8 @@ import { ErrorBoundary, useErrorHandler } from 'react-error-boundary';
 import { useLocation } from 'react-router-dom';
 import { AlliesOrEnemiesAccordion } from '../../ui-core/AlliesOrEnemiesAccordion';
 import { ErrorFallback } from '../../ui-core/ErrorBoundary';
-import { AvatarType } from '../avatars';
 import { lastAirBenderApi } from '../constants';
+import { AvatarType } from '../type';
 
 const AvatarPage = () => {
   const [avatar, setAvatar] = useState<AvatarType>();

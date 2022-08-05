@@ -1,9 +1,4 @@
 import {
-  Accordion,
-  AccordionButton,
-  AccordionIcon,
-  AccordionItem,
-  AccordionPanel,
   Box,
   Button,
   Center,
@@ -21,33 +16,33 @@ import {
 import { useEffect, useState } from 'react';
 import { ErrorBoundary, useErrorHandler } from 'react-error-boundary';
 import { useLocation } from 'react-router-dom';
-import { AccordionCharacter } from '../../ui-core/AccordionCharacter';
+import { AvatarType } from '../../Avatar/type';
+import { AlliesOrEnemiesAccordion } from '../../ui-core/AlliesOrEnemiesAccordion';
 import { ErrorFallback } from '../../ui-core/ErrorBoundary';
-import { AvatarType } from '../avatars';
 import { lastAirBenderApi } from '../constants';
 
-const AvatarPage = () => {
-  const [avatar, setAvatar] = useState<AvatarType>();
+const CharacterPage = () => {
+  const [character, setCharacters] = useState<AvatarType>();
   const [allies, setAllies] = useState<AvatarType[]>();
   const [enemies, setEnemies] = useState<AvatarType[]>();
 
   const location = useLocation();
   const handleError = useErrorHandler();
-  const characterId = location.pathname.slice(9);
+  const characterId = location.pathname.slice(12);
 
   useEffect(() => {
     fetch(`${lastAirBenderApi}/characters/${characterId}`)
       .then((result) => result.json())
       .then((result) => {
-        setAvatar(result);
+        setCharacters(result);
       })
       .catch((error) => {
         handleError(error);
       });
-  }, [characterId]);
+  }, [characterId, handleError]);
 
   useEffect(() => {
-    fetch(`${lastAirBenderApi}/characters?allies=${avatar?.name}`)
+    fetch(`${lastAirBenderApi}/characters?allies=${character?.name}`)
       .then((result) => result.json())
       .then((result) => {
         setAllies(result);
@@ -56,7 +51,7 @@ const AvatarPage = () => {
         handleError(error);
       });
 
-    fetch(`${lastAirBenderApi}/characters?enemies=${avatar?.name}`)
+    fetch(`${lastAirBenderApi}/characters?enemies=${character?.name}`)
       .then((result) => result.json())
       .then((result) => {
         setEnemies(result);
@@ -64,14 +59,14 @@ const AvatarPage = () => {
       .catch((error) => {
         handleError(error);
       });
-  }, [avatar]);
+  }, [character, handleError]);
 
   const renderPositionOrProfession = () => {
     let position = '';
-    if (avatar?.position) {
-      position = avatar.position;
-    } else if (avatar?.profession) {
-      position = avatar.profession;
+    if (character?.position) {
+      position = character.position;
+    } else if (character?.profession) {
+      position = character.profession;
     } else {
       return position;
     }
@@ -81,7 +76,7 @@ const AvatarPage = () => {
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Box mx={'auto'}>
-        {!avatar || !allies || !enemies ? (
+        {!character || !allies || !enemies ? (
           <Box height={'600px'} padding="6" boxShadow="lg" bg="white">
             <Center>
               <SkeletonCircle size={'300px'} />
@@ -100,37 +95,35 @@ const AvatarPage = () => {
               spacing={{ base: 8, md: 10 }}
               py={{ base: 18, md: 24 }}
             >
-              <Image
-                rounded={'md'}
-                alt={'product image'}
-                src={avatar?.photoUrl}
-                fallbackSrc={'/avatarplaceholder.png'}
-                fit={'cover'}
-                align={'center'}
-                w={'100%'}
-                h={{ base: '100%', sm: '400px', lg: '500px' }}
-              />
+              <Center>
+                {' '}
+                <Image
+                  rounded={'md'}
+                  alt={`${character?.name}`}
+                  src={character?.photoUrl}
+                  fallbackSrc={'/avatarplaceholder.png'}
+                  fit={'cover'}
+                  align={'center'}
+                  mb={{ base: '0', lg: '260px' }}
+                  w={{ base: '50%', lg: '76%' }}
+                  h={{ base: '100%', sm: '100%', lg: '53%' }}
+                />
+              </Center>
               <Stack spacing={{ base: 6, md: 10 }}>
                 <Box as={'header'}>
-                  <Heading
-                    lineHeight={1.1}
-                    fontWeight={600}
-                    fontSize={{
-                      base: '2xl',
-                      sm: '4xl',
-                      lg: '5xl',
-                    }}
-                  >
-                    {avatar?.name}
-                  </Heading>
-                  <Text
-                    //TODO: useColorModeValue("gray.900", "gray.400")
-                    color={'gray.900'}
-                    fontWeight={300}
-                    fontSize={'2xl'}
-                  >
-                    placeholder
-                  </Text>
+                  <Center>
+                    <Heading
+                      lineHeight={1.1}
+                      fontWeight={600}
+                      fontSize={{
+                        base: '2xl',
+                        sm: '4xl',
+                        lg: '5xl',
+                      }}
+                    >
+                      {character?.name}
+                    </Heading>
+                  </Center>
                 </Box>
 
                 <Stack
@@ -144,7 +137,17 @@ const AvatarPage = () => {
                   }
                 >
                   <VStack spacing={{ base: 4, sm: 6 }}>
-                    <Text fontSize={'lg'}>{renderPositionOrProfession()}</Text>
+                    <Text
+                      as="i"
+                      fontSize={'25px'}
+                      color={'yellow.500'}
+                      fontWeight={'500'}
+                      mb={'2'}
+                      ml={4}
+                      mr={1}
+                    >
+                      {renderPositionOrProfession()}
+                    </Text>
                   </VStack>
                   <Flex>
                     <Text
@@ -157,6 +160,7 @@ const AvatarPage = () => {
                       fontWeight={'500'}
                       textTransform={'uppercase'}
                       mb={'4'}
+                      ml={4}
                       mr={1}
                     >
                       Affiliation:
@@ -171,7 +175,11 @@ const AvatarPage = () => {
                       fontWeight={'500'}
                       mb={'4'}
                     >
-                      {avatar?.affiliation}
+                      {character?.affiliation ? (
+                        <Text>{character.affiliation}</Text>
+                      ) : (
+                        <Text>N/A</Text>
+                      )}
                     </Text>
                   </Flex>
                   <Flex>
@@ -186,6 +194,7 @@ const AvatarPage = () => {
                       textTransform={'uppercase'}
                       mb={'4'}
                       mr={1}
+                      ml={3}
                     >
                       Weapon:
                     </Text>
@@ -199,71 +208,16 @@ const AvatarPage = () => {
                       fontWeight={'500'}
                       mb={'4'}
                     >
-                      {avatar?.weapon}
+                      {character?.weapon ? (
+                        <Text>{character.weapon}</Text>
+                      ) : (
+                        <Text>N/A</Text>
+                      )}
                     </Text>
                   </Flex>
                 </Stack>
                 <Stack>
-                  <Accordion allowToggle>
-                    <AccordionItem>
-                      <h2>
-                        <AccordionButton>
-                          <Box flex="1" textAlign="left">
-                            <Text
-                              fontSize={{
-                                base: '16px',
-                                lg: '18px',
-                              }}
-                              //TODO: useColorModeValue("yellow.500", "yellow.300")
-                              color={'yellow.500'}
-                              fontWeight={'500'}
-                              textTransform={'uppercase'}
-                              mb={'4'}
-                            >
-                              Allies:
-                            </Text>
-                          </Box>
-                          <AccordionIcon />
-                        </AccordionButton>
-                      </h2>
-                      <AccordionPanel pb={4}>
-                        {allies?.length !== 0 ? (
-                          <AccordionCharacter allies={allies} />
-                        ) : (
-                          <Text>Has no allies</Text>
-                        )}
-                      </AccordionPanel>
-                    </AccordionItem>
-                    <AccordionItem>
-                      <h2>
-                        <AccordionButton>
-                          <Box flex="1" textAlign="left">
-                            <Text
-                              fontSize={{
-                                base: '16px',
-                                lg: '18px',
-                              }}
-                              //TODO: useColorModeValue("yellow.500", "yellow.300")
-                              color={'yellow.500'}
-                              fontWeight={'500'}
-                              textTransform={'uppercase'}
-                              mb={'4'}
-                            >
-                              Enemies:
-                            </Text>
-                          </Box>
-                          <AccordionIcon />
-                        </AccordionButton>
-                      </h2>
-                      <AccordionPanel pb={4}>
-                        {enemies?.length !== 0 ? (
-                          <AccordionCharacter enemies={enemies} />
-                        ) : (
-                          <Text>Has no enemies</Text>
-                        )}
-                      </AccordionPanel>
-                    </AccordionItem>
-                  </Accordion>
+                  <AlliesOrEnemiesAccordion allies={allies} enemies={enemies} />
                 </Stack>
 
                 <Button
@@ -282,9 +236,9 @@ const AvatarPage = () => {
                     transform: 'translateY(2px)',
                     boxShadow: 'lg',
                   }}
-                  href={`https://avatar.fandom.com/wiki/${avatar?.name}?so=search`}
+                  href={`https://avatar.fandom.com/wiki/${character?.name}?so=search`}
                 >
-                  Official Avatar Wiki for {avatar?.name}
+                  Official Avatar Wiki for {character?.name}
                 </Button>
               </Stack>
             </SimpleGrid>
@@ -295,4 +249,4 @@ const AvatarPage = () => {
   );
 };
 
-export default AvatarPage;
+export default CharacterPage;

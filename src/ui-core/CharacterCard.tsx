@@ -8,17 +8,17 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import { AvatarType } from '../Avatar/avatars.js';
+import { AvatarType } from '../Avatar/type.js';
 
 interface CharacterCardProps {
-  avatar: AvatarType;
+  character: AvatarType;
 }
 
-export const CharacterCard = ({ avatar }: CharacterCardProps) => {
+export const CharacterCard = ({ character }: CharacterCardProps) => {
   let navigate = useNavigate();
 
   function viewCharacterProfile(_id: string) {
-    navigate(`/avatars/${avatar._id}`);
+    navigate(`/characters/${character._id}`);
   }
 
   return (
@@ -32,14 +32,14 @@ export const CharacterCard = ({ avatar }: CharacterCardProps) => {
       m={5}
       textAlign={'center'}
     >
-      <Avatar size={'xl'} src={avatar.photoUrl} mb={4} pos={'relative'} />
+      <Avatar size={'xl'} src={character.photoUrl} mb={4} pos={'relative'} />
       <Heading fontSize={'2xl'} fontFamily={'body'}>
-        {avatar.name}
+        {character.name}
       </Heading>
       <Text fontWeight={600} color={'gray.500'} mb={4}>
-        {avatar?.profession && avatar.profession.length > 30
-          ? avatar.profession?.substring(0, 28 - 1) + '...'
-          : avatar.profession}
+        {character?.profession && character.profession.length > 30
+          ? character.profession?.substring(0, 28 - 1) + '...'
+          : character.profession}
       </Text>
 
       <Stack direction={'row'}>
@@ -58,7 +58,7 @@ export const CharacterCard = ({ avatar }: CharacterCardProps) => {
             bg: 'blue.500',
           }}
           onClick={() => {
-            viewCharacterProfile(avatar._id);
+            viewCharacterProfile(character._id);
           }}
           aria-label={'View Profile'}
         >

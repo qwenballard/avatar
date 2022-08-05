@@ -1,3 +1,7 @@
+/* 
+TODO: Update because this is not just for 
+Avatars but for Characters 
+*/
 export type AvatarType = {
   allies?: string[];
   enemies?: string[];

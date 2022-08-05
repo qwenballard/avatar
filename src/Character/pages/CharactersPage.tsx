@@ -11,7 +11,6 @@ const CharactersPage = () => {
   const handleError = useErrorHandler();
 
   useEffect(() => {
-    console.log(`${lastAirBenderApi}/characters`);
     fetch(`${lastAirBenderApi}/characters`)
       .then((results) => results.json())
       .then((results) => {

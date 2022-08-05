@@ -143,6 +143,7 @@ const CharacterPage = () => {
                       color={'yellow.500'}
                       fontWeight={'500'}
                       mb={'2'}
+                      ml={4}
                       mr={1}
                     >
                       {renderPositionOrProfession()}

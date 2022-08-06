@@ -16,6 +16,7 @@ Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 - [x] refactor error handling, reorganize components to be apart of the ui-core
 - [x] setup character client-side routes and edit characterPage styling
 - [x] fix characterCard image sizing (still could be improved)
+- [ ] add express backend to serve up react app
 - [ ] fix renderPositionOrProfession() function. Split out various jobs instead of having all on one string
 - [ ] implement pagination on charactersPage
 - [ ] implement redux rtkQuery

@@ -165,22 +165,11 @@ const CharacterPage = () => {
                     >
                       Affiliation:
                     </Text>
-                    <Text
-                      fontSize={{
-                        base: '16px',
-                        lg: '18px',
-                      }}
-                      //TODO: useColorModeValue("yellow.500", "yellow.300")
-                      color={'black.500'}
-                      fontWeight={'500'}
-                      mb={'4'}
-                    >
-                      {character?.affiliation ? (
-                        <Text>{character.affiliation}</Text>
-                      ) : (
-                        <Text>N/A</Text>
-                      )}
-                    </Text>
+                    {character?.affiliation ? (
+                      <Text>{character.affiliation}</Text>
+                    ) : (
+                      <Text>N/A</Text>
+                    )}
                   </Flex>
                   <Flex>
                     <Text
@@ -198,22 +187,39 @@ const CharacterPage = () => {
                     >
                       Weapon:
                     </Text>
-                    <Text
-                      fontSize={{
-                        base: '16px',
-                        lg: '18px',
-                      }}
-                      //TODO: useColorModeValue("yellow.500", "yellow.300")
-                      color={'black.500'}
-                      fontWeight={'500'}
-                      mb={'4'}
-                    >
-                      {character?.weapon ? (
-                        <Text>{character.weapon}</Text>
-                      ) : (
-                        <Text>N/A</Text>
-                      )}
-                    </Text>
+                    {character?.weapon ? (
+                      <Text
+                        fontSize={{
+                          base: '16px',
+                          lg: '18px',
+                        }}
+                        //TODO: useColorModeValue("yellow.500", "yellow.300")
+                        color={'yellow.500'}
+                        fontWeight={'500'}
+                        textTransform={'uppercase'}
+                        mb={'4'}
+                        mr={1}
+                        ml={3}
+                      >
+                        {character.weapon}
+                      </Text>
+                    ) : (
+                      <Text
+                        fontSize={{
+                          base: '16px',
+                          lg: '18px',
+                        }}
+                        //TODO: useColorModeValue("yellow.500", "yellow.300")
+                        color={'yellow.500'}
+                        fontWeight={'500'}
+                        textTransform={'uppercase'}
+                        mb={'4'}
+                        mr={1}
+                        ml={3}
+                      >
+                        N/A
+                      </Text>
+                    )}
                   </Flex>
                 </Stack>
                 <Stack>

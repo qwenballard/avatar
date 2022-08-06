@@ -27,26 +27,24 @@ export const AlliesOrEnemiesAccordion = ({
   return (
     <Accordion allowToggle>
       <AccordionItem>
-        <h2>
-          <AccordionButton>
-            <Box flex="1" textAlign="left">
-              <Text
-                fontSize={{
-                  base: '16px',
-                  lg: '18px',
-                }}
-                //TODO: useColorModeValue("yellow.500", "yellow.300")
-                color={'yellow.500'}
-                fontWeight={'500'}
-                textTransform={'uppercase'}
-                mb={'4'}
-              >
-                Allies:
-              </Text>
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-        </h2>
+        <AccordionButton>
+          <Box flex="1" textAlign="left">
+            <Text
+              fontSize={{
+                base: '16px',
+                lg: '18px',
+              }}
+              //TODO: useColorModeValue("yellow.500", "yellow.300")
+              color={'yellow.500'}
+              fontWeight={'500'}
+              textTransform={'uppercase'}
+              mb={'4'}
+            >
+              Allies:
+            </Text>
+          </Box>
+          <AccordionIcon />
+        </AccordionButton>
         <AccordionPanel pb={4}>
           {allies?.length !== 0 ? (
             <AccordionCharacterDropDown allies={allies} />

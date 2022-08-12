@@ -19,7 +19,7 @@ const CharactersPage = () => {
       .catch((error) => {
         handleError(error);
       });
-  }, [characters, handleError]);
+  }, [handleError]);
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>

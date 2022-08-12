@@ -1,7 +1,8 @@
 FROM node:16-alpine
+RUN npm install -g nodemon
 WORKDIR /app
-COPY package.json ./
-COPY yarn.lock ./
-COPY ./ ./
+COPY package.json .
 RUN yarn install
-CMD ["node", "app.js"]
+COPY . .
+EXPOSE 3001
+CMD ["yarn", "dev"]

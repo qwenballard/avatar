@@ -25,12 +25,11 @@ Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 - [ ] setup nations client-side routes
 - [ ] move commented out search bar to the navbar
 - [ ] implement unit tests
-- [ ] implement cd/ci using github actions and Heroku
+- [ ] implement cd/ci using github actions
+- [ ] deploy to digital ocean
 - [ ] implement storybook
 - [ ] Implement NX Monorepo and Docker (if not this project for future project)
 - [ ] dashboard of statistics for various stats (ie. # of characters, broken down by nation, etc.)
 - visual of the ATLA worldmap
-- [ ]
-- [ ] push & deploy dockerized containers to Heroku using github actions
 
 ~~- [ ] Implement search bar functionality on home page~~

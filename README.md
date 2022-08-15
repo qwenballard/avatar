@@ -18,6 +18,7 @@ Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 - [x] fix characterCard image sizing (still could be improved)
 - [x] add backend Node.js server and refactored to create separate containers for frontend and backend using Docker
 - [x] Fix bug avatar infinite rendering
+- [ ] move client side (3rd party) api request to server side
 - [ ] add nginx later to be a proxy server for containers
 - [ ] fix renderPositionOrProfession() function. Split out various jobs instead of having all on one string
 - [ ] implement pagination on charactersPage

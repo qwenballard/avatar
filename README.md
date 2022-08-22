@@ -32,5 +32,6 @@ Will plan to potentially use Node.js, Apollo GraphQL, redux, etc.
 - [ ] Implement NX Monorepo and Docker (if not this project for future project)
 - [ ] dashboard of statistics for various stats (ie. # of characters, broken down by nation, etc.)
 - visual of the ATLA worldmap
+- [ ] refactor dockerfiles to implement 10 best practice (https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/)
 
 ~~- [ ] Implement search bar functionality on home page~~

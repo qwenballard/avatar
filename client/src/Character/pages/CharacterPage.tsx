@@ -39,9 +39,6 @@ const CharacterPage = () => {
       },
     })
       .then((result) => result.json())
-      .then((result) => {
-        console.log('it worked');
-      })
       .catch((error) => {
         handleError(error);
       });

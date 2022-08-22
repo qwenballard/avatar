@@ -9,8 +9,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.send('root route');
+/* TODO:FETCH */
+app.get('/test', (req, res) => {
+  res.json('test route');
 });
 
 app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));

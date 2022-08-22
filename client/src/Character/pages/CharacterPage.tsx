@@ -31,6 +31,20 @@ const CharacterPage = () => {
   const characterId = location.pathname.slice(12);
 
   useEffect(() => {
+    /* TODO:FETCH */
+    fetch(`/test`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+    })
+      .then((result) => result.json())
+      .catch((error) => {
+        handleError(error);
+      });
+  }, []);
+
+  useEffect(() => {
     fetch(`${lastAirBenderApi}/characters/${characterId}`)
       .then((result) => result.json())
       .then((result) => {
